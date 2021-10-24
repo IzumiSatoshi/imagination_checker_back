@@ -1,9 +1,9 @@
 import itertools
 from flask import Flask, request
 from flask.json import jsonify
-from numpy import vectorize
 from pymagnitude import Magnitude
 from scipy import spatial
+from waitress import serve
 
 
 vectors = Magnitude('./chive-1.2-mc90.magnitude')
@@ -58,4 +58,4 @@ def calc_score(word_list):
 
 
 if __name__ == '__main__':
-    app.run()
+    serve(app, host='0.0.0.0', port=5000)
