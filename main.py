@@ -1,6 +1,7 @@
 import itertools
 from flask import Flask, request
 from flask.json import jsonify
+from flask_cors import CORS
 from pymagnitude import Magnitude
 from scipy import spatial
 from waitress import serve
@@ -9,6 +10,7 @@ from waitress import serve
 vectors = Magnitude('./chive-1.2-mc90.magnitude')
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+CORS(app)
 
 
 @app.route('/', methods=['POST'])
